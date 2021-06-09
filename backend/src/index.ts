@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 import app from './application';
 
 const port = process.env.PORT || 8000;
