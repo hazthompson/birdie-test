@@ -4,6 +4,16 @@ const EventModel = require('../models/EventModel');
 
 pingController.get('/api', async function (_, res) {
   const events = await EventModel.findAll();
-  // console.log('events', events)
   res.status(200).json(events);
+});
+
+pingController.get('/api/:careRecipientId', async function (req, res) {
+  const recipientsEvents = await EventModel.findAll(
+    {
+    where: {
+      care_recipient_id: req.params.careRecipientId,
+     }
+    }
+    );
+  res.status(200).json(recipientsEvents);
 });
