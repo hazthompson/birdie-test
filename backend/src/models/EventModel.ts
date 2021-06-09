@@ -1,7 +1,8 @@
-const { DataTypes, Model } = require('sequelize');
-const db = require('../utils/db');
+import { DataTypes, Model } from "sequelize";
+import db from "../utils/db";
+import { EventModelInterface } from "../../../utils/interfaces";
 
-class EventModel extends Model {}
+class EventModel extends Model<EventModelInterface> {}
 
 EventModel.init(
   {
@@ -50,10 +51,10 @@ EventModel.init(
 
   {
     sequelize: db, // We need to pass the connection instance
-    modelName: 'EventModel', // We need to choose the model name
-    tableName: 'events',
+    modelName: "EventModel", // We need to choose the model name
+    tableName: "events",
     timestamps: false,
   }
 );
 
-module.exports = EventModel;
+export default EventModel;
