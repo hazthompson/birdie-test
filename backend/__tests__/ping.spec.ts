@@ -6,7 +6,6 @@ beforeEach(() => {
   jest.resetModules();
 });
 
-
 describe('GET /api', () => {
   let mockEvents: Array<{id: number,
     event_type: string | null,
@@ -63,7 +62,79 @@ describe('GET /api', () => {
 
     it('returns the events as JSON', async () => {
       const response = await request(app).get('/api');
-      console.log('body',response.body);
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual(mockEvents);
+    });
+  });
+});
+
+//how to do typeface interfaces
+//rename pingController
+//go to /events
+describe('GET /api/:careRecipientId', () => {
+  let mockEvents: Array<{id: number,
+    event_type: string | null,
+    care_recipient_id: string | null,
+    alert_id: string | null,
+    task_instance_id: string | null,
+    visit_id: string | null,
+    caregiver_id: string | null,
+    rejected_event_id: string | null,
+    observation_event_id: string | null,
+    timestamp: string | null}> = [];
+
+  beforeEach(() => {
+    EventModel.findAll = jest.fn(() => mockEvents); // Mutate the named export
+  });
+
+  describe('when there are no events for a specific care recipient', () => {
+    it('returns an empty response', async () => {
+      const careRecipientId = '50'
+      const response = await request(app).get(`/api/${careRecipientId}`);
+      expect(EventModel.findAll).toHaveBeenCalledWith({where: {
+        care_recipient_id: careRecipientId,
+       }})
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual([]);
+    });
+  });
+
+  describe('when there are some events for a specific care recipient', () => {
+    beforeEach(() => {
+      mockEvents = [
+        {
+          id: 1,
+          event_type: "check_in",
+          care_recipient_id: "50",
+          alert_id: null,
+          task_instance_id: "dHxhOGMyOGVjNy1mZTY0LTQwYmMtYWQyNS1hMzJlNWQ3NGRlMjV8MjAxOS0wNC0yOVQxMTowMDowMC4wMDBafExVTkNI",
+          visit_id: "0886b57c-e021-46e0-b1a7-a45da0cc5941",
+          caregiver_id: "ac3967a6-1392-4227-9987-a201e0f8f287",
+          rejected_event_id: null,
+          observation_event_id: null,
+          timestamp: "2019-04-29T13:19:23.456Z",
+        },
+        {
+          id: 2,
+          event_type: "regular_medication_taken",
+          care_recipient_id: "50",
+          alert_id: null,
+          task_instance_id: "dHxhOGMyOGVjNy1mZTY0LTQwYmMtYWQyNS1hMzJlNWQ3NGRlMjV8MjAxOS0wNC0yOVQxMTowMDowMC4wMDBafExVTkGT",
+          visit_id: "0886b57c-e021-46e0-b1a7-a45da0cc5728",
+          caregiver_id: "ac3967a6-1392-4227-9987-a201e0f8f287",
+          rejected_event_id: null,
+          observation_event_id: null,
+          timestamp: "2010-01-10T18:19:23.456Z",
+        },
+      ];
+    });
+
+    it('returns the events as JSON', async () => {
+      const careRecipientId = '50'
+      const response = await request(app).get(`/api/${careRecipientId}`);
+      expect(EventModel.findAll).toHaveBeenCalledWith({where: {
+        care_recipient_id: careRecipientId,
+       }})
       expect(response.status).toBe(200);
       expect(response.body).toEqual(mockEvents);
     });
