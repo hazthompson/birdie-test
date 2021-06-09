@@ -1,22 +1,18 @@
 import app from '../src/application';
 import * as request from 'supertest';
+import {EventModelInterface} from '../src/utils/interfaces'
 const EventModel = require('../src/models/EventModel')
+
+
+
+
 
 beforeEach(() => {
   jest.resetModules();
 });
 
 describe('GET /api/events', () => {
-  let mockEvents: Array<{id: number,
-    event_type: string | null,
-    care_recipient_id: string | null,
-    alert_id: string | null,
-    task_instance_id: string | null,
-    visit_id: string | null,
-    caregiver_id: string | null,
-    rejected_event_id: string | null,
-    observation_event_id: string | null,
-    timestamp: string | null}> = [];
+  let mockEvents: Array<EventModelInterface> = [];
 
   beforeEach(() => {
     EventModel.findAll = jest.fn(() => mockEvents); // Mutate the named export
@@ -69,16 +65,7 @@ describe('GET /api/events', () => {
 });
 
 describe('GET /api/events/:careRecipientId', () => {
-  let mockEvents: Array<{id: number,
-    event_type: string | null,
-    care_recipient_id: string | null,
-    alert_id: string | null,
-    task_instance_id: string | null,
-    visit_id: string | null,
-    caregiver_id: string | null,
-    rejected_event_id: string | null,
-    observation_event_id: string | null,
-    timestamp: string | null}> = [];
+  let mockEvents: Array<EventModelInterface> = [];
 
   beforeEach(() => {
     EventModel.findAll = jest.fn(() => mockEvents); // Mutate the named export
