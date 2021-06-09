@@ -4,9 +4,6 @@ import {EventModelInterface} from '../src/utils/interfaces'
 const EventModel = require('../src/models/EventModel')
 
 
-
-
-
 beforeEach(() => {
   jest.resetModules();
 });
