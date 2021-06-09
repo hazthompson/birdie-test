@@ -6,7 +6,7 @@ beforeEach(() => {
   jest.resetModules();
 });
 
-describe('GET /api', () => {
+describe('GET /api/events', () => {
   let mockEvents: Array<{id: number,
     event_type: string | null,
     care_recipient_id: string | null,
@@ -24,7 +24,7 @@ describe('GET /api', () => {
 
   describe('when there are no events', () => {
     it('returns an empty response', async () => {
-      const response = await request(app).get('/api');
+      const response = await request(app).get('/api/events');
       expect(response.status).toBe(200);
       expect(response.body).toEqual([]);
     });
@@ -61,17 +61,14 @@ describe('GET /api', () => {
     });
 
     it('returns the events as JSON', async () => {
-      const response = await request(app).get('/api');
+      const response = await request(app).get('/api/events');
       expect(response.status).toBe(200);
       expect(response.body).toEqual(mockEvents);
     });
   });
 });
 
-//how to do typeface interfaces
-//rename pingController
-//go to /events
-describe('GET /api/:careRecipientId', () => {
+describe('GET /api/events/:careRecipientId', () => {
   let mockEvents: Array<{id: number,
     event_type: string | null,
     care_recipient_id: string | null,
@@ -90,7 +87,7 @@ describe('GET /api/:careRecipientId', () => {
   describe('when there are no events for a specific care recipient', () => {
     it('returns an empty response', async () => {
       const careRecipientId = '50'
-      const response = await request(app).get(`/api/${careRecipientId}`);
+      const response = await request(app).get(`/api/events/${careRecipientId}`);
       expect(EventModel.findAll).toHaveBeenCalledWith({where: {
         care_recipient_id: careRecipientId,
        }})
@@ -131,7 +128,7 @@ describe('GET /api/:careRecipientId', () => {
 
     it('returns the events as JSON', async () => {
       const careRecipientId = '50'
-      const response = await request(app).get(`/api/${careRecipientId}`);
+      const response = await request(app).get(`/api/events/${careRecipientId}`);
       expect(EventModel.findAll).toHaveBeenCalledWith({where: {
         care_recipient_id: careRecipientId,
        }})
