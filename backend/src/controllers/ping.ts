@@ -4,6 +4,6 @@ const EventModel = require('../models/EventModel');
 
 pingController.get('/api', async function (_, res) {
   const events = await EventModel.findAll();
-  console.log('events', events)
+  // console.log('events', events)
   res.status(200).json(events);
 });
