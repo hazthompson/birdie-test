@@ -1,6 +1,6 @@
 import app from '../src/application';
 import * as request from 'supertest';
-import {EventModelInterface} from '../src/utils/interfaces'
+import {EventModelInterface} from '../../utils/interfaces'
 const EventModel = require('../src/models/EventModel')
 
 
