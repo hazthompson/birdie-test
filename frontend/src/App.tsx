@@ -8,6 +8,7 @@ function App() {
   return (
     <Router>
       <div className='App'>
+        <header>Observations</header>
         <Switch>
           <Route path='/' exact>
             <HomePage />
