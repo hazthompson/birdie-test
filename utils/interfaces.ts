@@ -8,7 +8,11 @@ interface EventModelInterface {
   caregiver_id: string | null;
   rejected_event_id: string | null;
   observation_event_id: string | null;
-  timestamp: string | null
+  timestamp: string | null;
 }
 
-export {EventModelInterface}
+interface ParamTypes {
+  careRecipientId: string;
+}
+
+export { EventModelInterface, ParamTypes };

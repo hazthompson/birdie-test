@@ -1,31 +1,23 @@
-import { useEffect, useState } from "react";
 import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import EventsTimeline from "./pages/EventsTimeline";
 
 function App() {
-  const [events, setEvents] = useState<any[]>([]);
-  useEffect(() => {
-    fetch("/api/events/df50cac5-293c-490d-a06c-ee26796f850d")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data[0]);
-        setEvents(data);
-      });
-  }, []);
-
   return (
-    <div className='App'>
-      {!events ? (
-        <p>loading..</p>
-      ) : (
-        <header className='App-header'>
-          <ul>
-            {events.map((event) => (
-              <li key={event.id}>event visit id:{event.visit_id}</li>
-            ))}
-          </ul>
-        </header>
-      )}
-    </div>
+    <Router>
+      <div className='App'>
+        <Switch>
+          <Route path='/' exact>
+            <HomePage />
+          </Route>
+          <Route path='/:careRecipientId' exact>
+            <EventsTimeline />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
