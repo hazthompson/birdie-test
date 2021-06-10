@@ -84,6 +84,14 @@ describe("GET /api/events/:careRecipientId", () => {
       expect(EventModel.findAll).toHaveBeenCalledWith({
         where: {
           care_recipient_id: careRecipientId,
+          event_type: [
+            "concern_raised",
+            "fluid_intake_observation",
+            "food_intake_observation",
+            "general_observation",
+            "incontinence_pad_observation",
+            "mood_observation",
+          ],
         },
       });
       expect(response.status).toBe(200);
@@ -135,6 +143,14 @@ describe("GET /api/events/:careRecipientId", () => {
       expect(EventModel.findAll).toHaveBeenCalledWith({
         where: {
           care_recipient_id: careRecipientId,
+          event_type: [
+            "concern_raised",
+            "fluid_intake_observation",
+            "food_intake_observation",
+            "general_observation",
+            "incontinence_pad_observation",
+            "mood_observation",
+          ],
         },
       });
       expect(response.status).toBe(200);

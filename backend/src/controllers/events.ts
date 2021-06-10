@@ -11,6 +11,14 @@ eventsController.get("/events/:careRecipientId", async function (req, res) {
   const recipientsEvents = await EventModel.findAll({
     where: {
       care_recipient_id: req.params.careRecipientId,
+      event_type: [
+        "concern_raised",
+        "fluid_intake_observation",
+        "food_intake_observation",
+        "general_observation",
+        "incontinence_pad_observation",
+        "mood_observation",
+      ],
     },
   });
   res.status(200).json(recipientsEvents);
