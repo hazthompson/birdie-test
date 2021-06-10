@@ -47,6 +47,10 @@ EventModel.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    payload: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
 
   {

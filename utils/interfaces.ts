@@ -9,6 +9,7 @@ interface EventModelInterface {
   rejected_event_id: string | null;
   observation_event_id: string | null;
   timestamp: string | null;
+  payload: string | null;
 }
 
 interface ParamTypes {
