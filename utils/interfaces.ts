@@ -5,6 +5,7 @@ interface EventPayload {
   pad_condition: string;
   mood: string;
   severity: string;
+  meal: string;
 }
 
 interface EventModelInterface {

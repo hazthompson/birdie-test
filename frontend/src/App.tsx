@@ -8,12 +8,11 @@ function App() {
   return (
     <Router>
       <div className='App'>
-        <header>Observations</header>
         <Switch>
           <Route path='/' exact>
             <HomePage />
           </Route>
-          <Route path='/:careRecipientId' exact>
+          <Route path='/:careRecipientId'>
             <EventsTimeline />
           </Route>
         </Switch>

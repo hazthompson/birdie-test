@@ -19,7 +19,6 @@ function WorkIcon() {
 }
 
 function ConcernsTimeline({ eventsByEventType }: ConcernTimelineProps) {
-  console.log("concerns", eventsByEventType.concern_raised[0].payload.note);
   return (
     <div
       css={css`

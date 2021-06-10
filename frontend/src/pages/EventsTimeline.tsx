@@ -2,6 +2,7 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
 import { useEffect, useState } from "react";
+import { Route, useRouteMatch } from "react-router-dom";
 import "react-vertical-timeline-component/style.min.css";
 import { useParams } from "react-router-dom";
 import {
@@ -10,11 +11,12 @@ import {
   EventsByEventType,
 } from "../../../utils/interfaces";
 import ConcernsTimeline from "./ConcernsTimeline";
+import ObservationsTimeline from "./ObservationsTimeline";
 
 function EventsTimeline() {
   const { careRecipientId } = useParams<ParamTypes>();
-  console.log("params", careRecipientId);
-  // const [events, setEvents] = useState<any[]>([]);
+  let { path } = useRouteMatch();
+  const [Observations, setObservations] = useState<any[]>([]);
   const [eventsByEventType, setEventsByEventType] = useState<EventsByEventType>(
     {}
   );
@@ -23,13 +25,11 @@ function EventsTimeline() {
     fetch(`/api/events/${careRecipientId}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data[0]);
-        // setEvents(data);
         const eventsTypeObject: EventsByEventType = {};
 
+        setObservations(data);
         data.forEach((event: EventModelInterface) => {
           if (!event.event_type) return;
-
           if (!eventsTypeObject[event.event_type]) {
             eventsTypeObject[event.event_type] = [];
           }
@@ -43,9 +43,17 @@ function EventsTimeline() {
   return (
     <div>
       {!Object.keys(eventsByEventType).length ? (
-        <p>loading..</p>
+        <p>loading...</p>
       ) : (
-        <ConcernsTimeline eventsByEventType={eventsByEventType} />
+        <div>
+          <header>Observations</header>
+          <Route path={path} exact>
+            <ObservationsTimeline events={Observations} />
+          </Route>
+          <Route path={`${path}/concerns`}>
+            <ConcernsTimeline eventsByEventType={eventsByEventType} />
+          </Route>
+        </div>
       )}
     </div>
   );
