@@ -1,3 +1,6 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
@@ -5,6 +8,7 @@ import {
   ParamTypes,
   EventsByEventType,
 } from "../../../utils/interfaces";
+import GlobalStyles from "../assets/GlobalStyles";
 
 function EventsTimeline() {
   const { careRecipientId } = useParams<ParamTypes>();
@@ -42,7 +46,12 @@ function EventsTimeline() {
       {!events ? (
         <p>loading..</p>
       ) : (
-        <header className='App-header'>
+        <header
+          className='App-header'
+          css={css`
+            background-color: ${GlobalStyles.darkGrayBlue};
+          `}
+        >
           <ul>
             {events.map((event) => (
               <li key={event.id}>event visit id:{event.visit_id}</li>
