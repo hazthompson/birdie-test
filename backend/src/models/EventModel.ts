@@ -19,23 +19,7 @@ EventModel.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    alert_id: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    task_instance_id: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    visit_id: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     caregiver_id: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    rejected_event_id: {
       type: DataTypes.STRING,
       allowNull: true,
     },
