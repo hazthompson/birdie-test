@@ -16,4 +16,8 @@ interface ParamTypes {
   careRecipientId: string;
 }
 
-export { EventModelInterface, ParamTypes };
+interface EventsByEventType {
+  [key: string]: EventModelInterface[];
+}
+
+export { EventModelInterface, ParamTypes, EventsByEventType };
