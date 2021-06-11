@@ -96,9 +96,28 @@ describe("GET /api/events/:careRecipientId", () => {
             "incontinence_pad_observation",
           ],
         },
+        order: [["timeStamp", "DESC"]],
       });
       expect(response.status).toBe(200);
       expect(response.body).toEqual([]);
+    });
+
+    describe("when there are no events types are requested in the query params", () => {
+      it("returns empty array if no event types are requested in query params", async () => {
+        const careRecipientId = "50";
+        const response = await request(app).get(
+          `/api/events/${careRecipientId}`
+        );
+        expect(EventModel.findAll).toHaveBeenCalledWith({
+          where: {
+            care_recipient_id: careRecipientId,
+            event_type: [],
+          },
+          order: [["timeStamp", "DESC"]],
+        });
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual(mockEvents);
+      });
     });
   });
 
@@ -158,19 +177,7 @@ describe("GET /api/events/:careRecipientId", () => {
             "incontinence_pad_observation",
           ],
         },
-      });
-      expect(response.status).toBe(200);
-      expect(response.body).toEqual(mockEvents);
-    });
-
-    it("returns empty array if no even types are requested in query params", async () => {
-      const careRecipientId = "50";
-      const response = await request(app).get(`/api/events/${careRecipientId}`);
-      expect(EventModel.findAll).toHaveBeenCalledWith({
-        where: {
-          care_recipient_id: careRecipientId,
-          event_type: [],
-        },
+        order: [["timeStamp", "DESC"]],
       });
       expect(response.status).toBe(200);
       expect(response.body).toEqual(mockEvents);
