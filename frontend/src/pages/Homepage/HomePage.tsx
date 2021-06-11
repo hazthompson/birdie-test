@@ -46,9 +46,11 @@ function HomePage() {
             htmlFor='recipientId'
             css={css`
               font-weight: bold;
+              font-family: ${GlobalStyles.headerFont};
+              font-size: 20px;
             `}
           >
-            Care Recipient's ID:
+            Please enter a care Recipient's ID:
           </label>
           <input
             type='text'
@@ -66,6 +68,7 @@ function HomePage() {
             type='submit'
             value='Submit'
             css={css`
+              font-family: ${GlobalStyles.headerFont};
               width: 25%;
               font-weight: bold;
               margin: auto;

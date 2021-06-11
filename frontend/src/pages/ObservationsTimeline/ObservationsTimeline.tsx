@@ -77,6 +77,7 @@ function ObservationsTimeline({ events }: ObservationsTimelineProps) {
               className='vertical-timeline-element-title'
               css={css`
                 text-transform: capitalize;
+                font-family: ${GlobalStyles.headerFont};
               `}
             >
               {event.event_type
@@ -85,7 +86,16 @@ function ObservationsTimeline({ events }: ObservationsTimelineProps) {
                 .replace(/\w+[.!?]?$/, "")}
             </h3>
             {furtherInfoAvailable(event) && (
-              <p> {furtherInfoAvailable(event)}</p>
+              <p
+                css={css`
+                  text-transform: capitalize;
+                  font-family: ${GlobalStyles.bodyFont};
+                  font-weight: 200;
+                `}
+              >
+                {" "}
+                {furtherInfoAvailable(event)}
+              </p>
             )}
             {event.payload.note &&
               event.payload.note !== "None" &&

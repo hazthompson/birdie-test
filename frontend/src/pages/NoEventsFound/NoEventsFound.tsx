@@ -44,6 +44,7 @@ function NoEventsFound() {
             css={css`
               color: ${GlobalStyles.copperOrange};
               font-weight: bold;
+              font-family: ${GlobalStyles.headerFont};
             `}
           >
             No Events found for this ID
@@ -52,6 +53,7 @@ function NoEventsFound() {
             css={css`
               color: ${GlobalStyles.copperOrange};
               margin-bottom: 40px;
+              font-family: ${GlobalStyles.bodyFont};
             `}
           >
             Please check the ID is correct, or come back again once events have
@@ -60,6 +62,7 @@ function NoEventsFound() {
           <button
             onClick={returnToHome}
             css={css`
+              font-family: ${GlobalStyles.headerFont};
               font-weight: bold;
               margin: auto;
               border: none;

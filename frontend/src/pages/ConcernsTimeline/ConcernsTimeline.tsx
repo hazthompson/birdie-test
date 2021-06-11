@@ -43,10 +43,22 @@ function ConcernsTimeline({ events }: ConcernTimelineProps) {
             iconStyle={{ background: `${GlobalStyles.birdieBlue}` }}
             icon={<FlagIcon />}
           >
-            <h3 className='vertical-timeline-element-title'>
+            <h3
+              className='vertical-timeline-element-title'
+              css={css`
+                font-family: ${GlobalStyles.headerFont};
+              `}
+            >
               Severity: {concern.payload.severity}
             </h3>
-            <p>Further details: {concern.payload.note}</p>
+            <p
+              css={css`
+                font-family: ${GlobalStyles.bodyFont};
+                font-weight: 200;
+              `}
+            >
+              Further details: {concern.payload.note}
+            </p>
           </VerticalTimelineElement>
         ))}
       </VerticalTimeline>

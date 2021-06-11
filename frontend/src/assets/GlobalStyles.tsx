@@ -7,6 +7,10 @@ const GlobalStyles = {
   yellow: "#F6E27F",
   pinkyWhite: "#FAF5FE",
   lightGray: "#E3E3E3",
+
+  //fonts:
+  headerFont: "Poppins, sans-serif",
+  bodyFont: "Roboto, sans-serif",
 };
 
 export default GlobalStyles;

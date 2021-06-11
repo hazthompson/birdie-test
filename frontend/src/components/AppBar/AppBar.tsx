@@ -10,6 +10,23 @@ interface AppBarProps {
   hasConcerns: Boolean;
 }
 
+const navLinkStyling = css`
+  color: ${GlobalStyles.birdieBlue};
+  cursor: pointer;
+  grid-row: 1;
+  font-family: ${GlobalStyles.headerFont};
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 25px;
+  &:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+  }
+  &:visited {
+    color: ${GlobalStyles.birdieBlue};
+  }
+`;
+
 function AppBar({ hasConcerns }: AppBarProps) {
   const { careRecipientId } = useParams<ParamTypes>();
   return (
@@ -22,19 +39,24 @@ function AppBar({ hasConcerns }: AppBarProps) {
       `}
     >
       <NavLink
+        exact
         to={`/${careRecipientId}`}
-        css={css`
-          grid-row: 1;
-        `}
+        activeStyle={{
+          textDecoration: "underline",
+          textUnderlinePosition: "under",
+        }}
+        css={navLinkStyling}
       >
         Observations
       </NavLink>
       {hasConcerns && (
         <NavLink
           to={`/${careRecipientId}/concerns`}
-          css={css`
-            grid-row: 1;
-          `}
+          activeStyle={{
+            textDecoration: "underline",
+            textUnderlinePosition: "under",
+          }}
+          css={navLinkStyling}
         >
           Concerns
         </NavLink>
