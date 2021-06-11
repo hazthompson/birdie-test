@@ -8,14 +8,16 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFlag } from "@fortawesome/free-solid-svg-icons";
 import { EventModelInterface } from "../../../utils/interfaces";
 
 interface ConcernTimelineProps {
   events: Array<EventModelInterface>;
 }
 
-function WorkIcon() {
-  return <p>1</p>;
+function FlagIcon() {
+  return <FontAwesomeIcon icon={faFlag} />;
 }
 
 function ConcernsTimeline({ events }: ConcernTimelineProps) {
@@ -39,7 +41,7 @@ function ConcernsTimeline({ events }: ConcernTimelineProps) {
             }}
             date={moment(concern.timestamp).format("LL")}
             iconStyle={{ background: `${GlobalStyles.birdieBlue}` }}
-            icon={<WorkIcon />}
+            icon={<FlagIcon />}
           >
             <h3 className='vertical-timeline-element-title'>
               Severity: {concern.payload.severity}

@@ -8,14 +8,33 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFlag } from "@fortawesome/free-solid-svg-icons";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { faUtensils } from "@fortawesome/free-solid-svg-icons";
+import { faClipboard } from "@fortawesome/free-solid-svg-icons";
+import { faSmile } from "@fortawesome/free-solid-svg-icons";
 import { EventModelInterface } from "../../../utils/interfaces";
 
 interface ObservationsTimelineProps {
   events: EventModelInterface[];
 }
 
-function WorkIcon() {
-  return <p>1</p>;
+interface IconProps {
+  eventType: string;
+}
+
+function ObservationIcon({ eventType }: IconProps) {
+  if (eventType.includes("fluid")) {
+    return <FontAwesomeIcon icon={faCoffee} />;
+  } else if (eventType.includes("food")) {
+    return <FontAwesomeIcon icon={faUtensils} />;
+  } else if (eventType.includes("general")) {
+    return <FontAwesomeIcon icon={faClipboard} />;
+  } else if (eventType.includes("mood")) {
+    return <FontAwesomeIcon icon={faSmile} />;
+  }
+  return <FontAwesomeIcon icon={faFlag} />;
 }
 
 function ObservationsTimeline({ events }: ObservationsTimelineProps) {
@@ -54,7 +73,7 @@ function ObservationsTimeline({ events }: ObservationsTimelineProps) {
             }}
             date={moment(event.timestamp).format("LL")}
             iconStyle={{ background: `${GlobalStyles.birdieBlue}` }}
-            icon={<WorkIcon />}
+            icon={<ObservationIcon eventType={event.event_type || ""} />}
           >
             <h3
               className='vertical-timeline-element-title'
