@@ -1,9 +1,17 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import GlobalStyles from "../assets/GlobalStyles";
 
 function Homepage() {
+  const history = useHistory();
+  const [recipientId, setRecipientId] = useState<string>("");
+
+  const handleSubmit = async (e: any) => {
+    history.push(`/${recipientId}`);
+  };
   return (
     <div
       css={css`
@@ -28,6 +36,7 @@ function Homepage() {
         `}
       >
         <form
+          onSubmit={handleSubmit}
           css={css`
             display: grid;
             padding: 0 80px 0 80px;
@@ -44,6 +53,7 @@ function Homepage() {
               border: none;
               height: 30px;
             `}
+            onChange={(event) => setRecipientId(event.target.value)}
           ></input>
           <input
             type='submit'
