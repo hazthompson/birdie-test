@@ -10,12 +10,14 @@ import { EventModelInterface } from "../../../utils/interfaces";
 import ConcernsTimeline from "./ConcernsTimeline";
 import ObservationsTimeline from "./ObservationsTimeline";
 import AppBar from "../components/AppBar";
+import NoEventsFound from "./NoEventsFound";
 
 function EventsTimeline() {
   const { careRecipientId } = useParams<ParamTypes>();
   let { path } = useRouteMatch();
   const [observations, setObservations] = useState<EventModelInterface[]>([]);
   const [concerns, setConcerns] = useState<EventModelInterface[]>([]);
+  const [loading, setLoading] = useState<Boolean>(true);
 
   useEffect(() => {
     fetch(
@@ -24,12 +26,14 @@ function EventsTimeline() {
       .then((response) => response.json())
       .then((data) => {
         setObservations(data);
+        setLoading(false);
       });
 
     fetch(`/api/events/${careRecipientId}?eventType=concern_raised`)
       .then((response) => response.json())
       .then((data) => {
         setConcerns(data);
+        setLoading(false);
       });
   }, [careRecipientId]);
 
@@ -41,10 +45,14 @@ function EventsTimeline() {
     }
   };
 
+  // !observations.length
+  if (loading) {
+    return <p>loading...</p>;
+  }
   return (
     <div>
       {!observations.length ? (
-        <p>loading...</p>
+        <NoEventsFound />
       ) : (
         <div>
           <AppBar hasConcerns={hasConcerns()} />

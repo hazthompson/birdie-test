@@ -1,17 +1,16 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import GlobalStyles from "../assets/GlobalStyles";
 
-function Homepage() {
+function NoEventsFound() {
   const history = useHistory();
-  const [recipientId, setRecipientId] = useState<string>("");
 
-  const handleSubmit = async (e: any) => {
-    history.push(`/${recipientId}`);
+  const returnToHome = async (e: any) => {
+    history.push(`/`);
   };
+
   return (
     <div
       css={css`
@@ -23,7 +22,7 @@ function Homepage() {
     >
       <div
         css={css`
-          background-color: ${GlobalStyles.birdieBlue};
+          background-color: ${GlobalStyles.darkGrayBlue};
           height: 500px;
           width: 500px;
           border-radius: 10px;
@@ -35,55 +34,52 @@ function Homepage() {
           align-content: center;
         `}
       >
-        <form
-          onSubmit={handleSubmit}
+        <div
           css={css`
             display: grid;
             padding: 0 80px 0 80px;
           `}
         >
-          <label
+          <h3
             css={css`
+              color: ${GlobalStyles.copperOrange};
               font-weight: bold;
             `}
           >
-            Care Recipient's ID:
-          </label>
-          <input
-            type='text'
-            id='recipientId'
-            name='recipientId'
+            No Events found for this ID
+          </h3>
+          <p
             css={css`
-              margin: 40px 0 40px 0;
-              border-radius: 5px;
-              border: none;
-              height: 30px;
+              color: ${GlobalStyles.copperOrange};
+              margin-bottom: 40px;
             `}
-            onChange={(event) => setRecipientId(event.target.value)}
-          ></input>
-          <input
-            type='submit'
-            value='Submit'
+          >
+            Please check the ID is correct, or come back again once events have
+            been added for this recipient
+          </p>
+          <button
+            onClick={returnToHome}
             css={css`
-              width: 25%;
               font-weight: bold;
               margin: auto;
               border: none;
               border-radius: 5px;
-              background-color: ${GlobalStyles.darkGrayBlue};
-              color: ${GlobalStyles.lightGray};
+              background-color: ${GlobalStyles.birdieBlue};
               height: 30px;
+              color: ${GlobalStyles.lightGray};
               &:hover {
                 background-color: ${GlobalStyles.lightGray};
                 cursor: pointer;
                 color: ${GlobalStyles.darkGrayBlue};
               }
             `}
-          ></input>
-        </form>
+          >
+            Return to homepage
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
-export default Homepage;
+export default NoEventsFound;
