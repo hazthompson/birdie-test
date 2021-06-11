@@ -40,6 +40,7 @@ describe("GET /api/events", () => {
             pad_condition: "wet",
             mood: "okay",
             severity: "low",
+            meal: "snack",
           },
         },
         {
@@ -56,6 +57,7 @@ describe("GET /api/events", () => {
             pad_condition: "wet",
             mood: "okay",
             severity: "",
+            meal: "snack",
           },
         },
       ];
@@ -80,17 +82,18 @@ describe("GET /api/events/:careRecipientId", () => {
   describe("when there are no events for a specific care recipient", () => {
     it("returns an empty response", async () => {
       const careRecipientId = "50";
-      const response = await request(app).get(`/api/events/${careRecipientId}`);
+      const response = await request(app).get(
+        `/api/events/${careRecipientId}?eventType=concern_raised&eventType=fluid_intake_observation&eventType=general_observation&eventType=food_intake_observation&eventType=incontinence_pad_observation`
+      );
       expect(EventModel.findAll).toHaveBeenCalledWith({
         where: {
           care_recipient_id: careRecipientId,
           event_type: [
             "concern_raised",
             "fluid_intake_observation",
-            "food_intake_observation",
             "general_observation",
+            "food_intake_observation",
             "incontinence_pad_observation",
-            "mood_observation",
           ],
         },
       });
@@ -116,6 +119,7 @@ describe("GET /api/events/:careRecipientId", () => {
             pad_condition: "wet",
             mood: "okay",
             severity: "low",
+            meal: "snack",
           },
         },
         {
@@ -132,25 +136,40 @@ describe("GET /api/events/:careRecipientId", () => {
             pad_condition: "wet",
             mood: "okay",
             severity: "low",
+            meal: "snack",
           },
         },
       ];
     });
 
-    it("returns the events as JSON", async () => {
+    it("returns the events with the correct event types (requested in query params) as JSON", async () => {
       const careRecipientId = "50";
-      const response = await request(app).get(`/api/events/${careRecipientId}`);
+      const response = await request(app).get(
+        `/api/events/${careRecipientId}?eventType=concern_raised&eventType=fluid_intake_observation&eventType=general_observation&eventType=food_intake_observation&eventType=incontinence_pad_observation`
+      );
       expect(EventModel.findAll).toHaveBeenCalledWith({
         where: {
           care_recipient_id: careRecipientId,
           event_type: [
             "concern_raised",
             "fluid_intake_observation",
-            "food_intake_observation",
             "general_observation",
+            "food_intake_observation",
             "incontinence_pad_observation",
-            "mood_observation",
           ],
+        },
+      });
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual(mockEvents);
+    });
+
+    it("returns empty array if no even types are requested in query params", async () => {
+      const careRecipientId = "50";
+      const response = await request(app).get(`/api/events/${careRecipientId}`);
+      expect(EventModel.findAll).toHaveBeenCalledWith({
+        where: {
+          care_recipient_id: careRecipientId,
+          event_type: [],
         },
       });
       expect(response.status).toBe(200);
