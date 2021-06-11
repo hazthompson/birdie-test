@@ -8,17 +8,17 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { EventsByEventType } from "../../../utils/interfaces";
+import { EventModelInterface } from "../../../utils/interfaces";
 
 interface ConcernTimelineProps {
-  eventsByEventType: EventsByEventType;
+  events: Array<EventModelInterface>;
 }
 
 function WorkIcon() {
   return <p>1</p>;
 }
 
-function ConcernsTimeline({ eventsByEventType }: ConcernTimelineProps) {
+function ConcernsTimeline({ events }: ConcernTimelineProps) {
   return (
     <div
       css={css`
@@ -30,7 +30,7 @@ function ConcernsTimeline({ eventsByEventType }: ConcernTimelineProps) {
           background: `${GlobalStyles.lightGray}`,
         }}
       >
-        {eventsByEventType.concern_raised.map((concern) => (
+        {events.map((concern) => (
           <VerticalTimelineElement
             key={concern.id}
             className='vertical-timeline-element--work'

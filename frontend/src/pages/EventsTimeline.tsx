@@ -16,42 +16,52 @@ import ObservationsTimeline from "./ObservationsTimeline";
 function EventsTimeline() {
   const { careRecipientId } = useParams<ParamTypes>();
   let { path } = useRouteMatch();
-  const [Observations, setObservations] = useState<any[]>([]);
+  const [observations, setObservations] = useState<any[]>([]);
+  const [concerns, setConcerns] = useState<any[]>([]);
   const [eventsByEventType, setEventsByEventType] = useState<EventsByEventType>(
     {}
   );
 
   useEffect(() => {
-    fetch(`/api/events/${careRecipientId}`)
+    fetch(
+      `/api/events/${careRecipientId}?eventType=fluid_intake_observation&eventType=general_observation&eventType=food_intake_observation&eventType=incontinence_pad_observation&eventType=mood_observation`
+    )
       .then((response) => response.json())
       .then((data) => {
-        const eventsTypeObject: EventsByEventType = {};
-
         setObservations(data);
-        data.forEach((event: EventModelInterface) => {
-          if (!event.event_type) return;
-          if (!eventsTypeObject[event.event_type]) {
-            eventsTypeObject[event.event_type] = [];
-          }
-          eventsTypeObject[event.event_type].push(event);
-        });
+        console.log("obs data", data);
+      });
 
-        setEventsByEventType(eventsTypeObject);
+    fetch(`/api/events/${careRecipientId}?eventType=concern_raised`)
+      .then((response) => response.json())
+      .then((data) => {
+        // const eventsTypeObject: EventsByEventType = {};
+        // setObservations(data);
+        // data.forEach((event: EventModelInterface) => {
+        //   if (!event.event_type) return;
+        //   if (!eventsTypeObject[event.event_type]) {
+        //     eventsTypeObject[event.event_type] = [];
+        //   }
+        //   eventsTypeObject[event.event_type].push(event);
+        // });
+        // setEventsByEventType(eventsTypeObject);
+        setConcerns(data);
+        console.log("concerns data", data);
       });
   }, [careRecipientId]);
 
   return (
     <div>
-      {!Object.keys(eventsByEventType).length ? (
+      {!observations.length ? (
         <p>loading...</p>
       ) : (
         <div>
           <header>Observations</header>
           <Route path={path} exact>
-            <ObservationsTimeline events={Observations} />
+            <ObservationsTimeline events={observations} />
           </Route>
           <Route path={`${path}/concerns`}>
-            <ConcernsTimeline eventsByEventType={eventsByEventType} />
+            <ConcernsTimeline events={concerns} />
           </Route>
         </div>
       )}
