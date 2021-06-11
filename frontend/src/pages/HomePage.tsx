@@ -3,7 +3,7 @@
 import { css, jsx } from "@emotion/react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import GlobalStyles from "../assets/GlobalStyles";
+import GlobalStyles from "assets/GlobalStyles";
 
 function Homepage() {
   const history = useHistory();

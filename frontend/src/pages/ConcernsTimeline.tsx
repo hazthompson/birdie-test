@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
-import GlobalStyles from "../assets/GlobalStyles";
+import GlobalStyles from "assets/GlobalStyles";
 import moment from "moment";
 import {
   VerticalTimeline,
@@ -10,7 +10,7 @@ import {
 import "react-vertical-timeline-component/style.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFlag } from "@fortawesome/free-solid-svg-icons";
-import { EventModelInterface } from "../../../utils/interfaces";
+import { EventModelInterface } from "utils/interfaces";
 
 interface ConcernTimelineProps {
   events: Array<EventModelInterface>;

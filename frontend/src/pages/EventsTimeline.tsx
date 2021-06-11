@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 import { Route, useRouteMatch } from "react-router-dom";
 import "react-vertical-timeline-component/style.min.css";
 import { useParams } from "react-router-dom";
-import { ParamTypes } from "../../../utils/interfaces";
-import { EventModelInterface } from "../../../utils/interfaces";
-import ConcernsTimeline from "./ConcernsTimeline";
-import ObservationsTimeline from "./ObservationsTimeline";
-import AppBar from "../components/AppBar";
-import NoEventsFound from "./NoEventsFound";
+import { ParamTypes } from "utils/interfaces";
+import { EventModelInterface } from "utils/interfaces";
+import ConcernsTimeline from "pages/ConcernsTimeline";
+import ObservationsTimeline from "pages/ObservationsTimeline";
+import AppBar from "components/AppBar";
+import NoEventsFound from "pages/NoEventsFound";
 
 function EventsTimeline() {
   const { careRecipientId } = useParams<ParamTypes>();

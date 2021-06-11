@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
 import { useHistory } from "react-router-dom";
-import GlobalStyles from "../assets/GlobalStyles";
+import GlobalStyles from "assets/GlobalStyles";
 
 function NoEventsFound() {
   const history = useHistory();

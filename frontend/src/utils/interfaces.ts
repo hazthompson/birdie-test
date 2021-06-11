@@ -18,4 +18,8 @@ interface EventModelInterface {
   payload: EventPayload;
 }
 
-export type { EventModelInterface };
+interface ParamTypes {
+  careRecipientId: string;
+}
+
+export type { EventModelInterface, ParamTypes };

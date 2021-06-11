@@ -3,7 +3,7 @@
 import { css, jsx } from "@emotion/react";
 import GlobalStyles from "../assets/GlobalStyles";
 import { useParams } from "react-router-dom";
-import { ParamTypes } from "../../../utils/interfaces";
+import { ParamTypes } from "utils/interfaces";
 import { NavLink } from "react-router-dom";
 
 interface AppBarProps {
