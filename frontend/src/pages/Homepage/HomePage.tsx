@@ -19,6 +19,9 @@ function HomePage() {
         height: 100vh;
         margin: 0;
         position: relative;
+        @media (max-width: ${GlobalStyles.mobileBreakpoint}px) {
+          background-color: ${GlobalStyles.birdieBlue};
+        }
       `}
     >
       <div
@@ -33,6 +36,10 @@ function HomePage() {
           transform: translate(-50%, -50%);
           display: grid;
           align-content: center;
+          @media (max-width: ${GlobalStyles.mobileBreakpoint}px) {
+            background-color: ${GlobalStyles.birdieBlue};
+            width: 100vw;
+          }
         `}
       >
         <form
@@ -81,6 +88,9 @@ function HomePage() {
                 background-color: ${GlobalStyles.lightGray};
                 cursor: pointer;
                 color: ${GlobalStyles.darkGrayBlue};
+              }
+              @media (max-width: ${GlobalStyles.mobileBreakpoint}px) {
+                width: 50%;
               }
             `}
           ></input>

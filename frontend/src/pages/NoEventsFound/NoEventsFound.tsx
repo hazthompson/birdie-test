@@ -18,6 +18,9 @@ function NoEventsFound() {
         height: 100vh;
         margin: 0;
         position: relative;
+        @media (max-width: ${GlobalStyles.mobileBreakpoint}px) {
+          background-color: ${GlobalStyles.darkGrayBlue};
+        }
       `}
     >
       <div
@@ -32,6 +35,9 @@ function NoEventsFound() {
           transform: translate(-50%, -50%);
           display: grid;
           align-content: center;
+          @media (max-width: ${GlobalStyles.mobileBreakpoint}px) {
+            width: 100vw;
+          }
         `}
       >
         <div

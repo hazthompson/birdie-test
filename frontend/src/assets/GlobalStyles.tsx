@@ -11,6 +11,9 @@ const GlobalStyles = {
   //fonts:
   headerFont: "Poppins, sans-serif",
   bodyFont: "Roboto, sans-serif",
+
+  //breakpoints:
+  mobileBreakpoint: 960,
 };
 
 export default GlobalStyles;
