@@ -11,7 +11,7 @@ import "react-vertical-timeline-component/style.min.css";
 import { EventModelInterface } from "../../../utils/interfaces";
 
 interface ObservationsTimelineProps {
-  events: Array<EventModelInterface>;
+  events: EventModelInterface[];
 }
 
 function WorkIcon() {

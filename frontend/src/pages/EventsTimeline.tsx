@@ -5,22 +5,16 @@ import { useEffect, useState } from "react";
 import { Route, useRouteMatch } from "react-router-dom";
 import "react-vertical-timeline-component/style.min.css";
 import { useParams } from "react-router-dom";
-import {
-  EventModelInterface,
-  ParamTypes,
-  EventsByEventType,
-} from "../../../utils/interfaces";
+import { ParamTypes } from "../../../utils/interfaces";
+import { EventModelInterface } from "../../../utils/interfaces";
 import ConcernsTimeline from "./ConcernsTimeline";
 import ObservationsTimeline from "./ObservationsTimeline";
 
 function EventsTimeline() {
   const { careRecipientId } = useParams<ParamTypes>();
   let { path } = useRouteMatch();
-  const [observations, setObservations] = useState<any[]>([]);
-  const [concerns, setConcerns] = useState<any[]>([]);
-  const [eventsByEventType, setEventsByEventType] = useState<EventsByEventType>(
-    {}
-  );
+  const [observations, setObservations] = useState<EventModelInterface[]>([]);
+  const [concerns, setConcerns] = useState<EventModelInterface[]>([]);
 
   useEffect(() => {
     fetch(
@@ -29,24 +23,12 @@ function EventsTimeline() {
       .then((response) => response.json())
       .then((data) => {
         setObservations(data);
-        console.log("obs data", data);
       });
 
     fetch(`/api/events/${careRecipientId}?eventType=concern_raised`)
       .then((response) => response.json())
       .then((data) => {
-        // const eventsTypeObject: EventsByEventType = {};
-        // setObservations(data);
-        // data.forEach((event: EventModelInterface) => {
-        //   if (!event.event_type) return;
-        //   if (!eventsTypeObject[event.event_type]) {
-        //     eventsTypeObject[event.event_type] = [];
-        //   }
-        //   eventsTypeObject[event.event_type].push(event);
-        // });
-        // setEventsByEventType(eventsTypeObject);
         setConcerns(data);
-        console.log("concerns data", data);
       });
   }, [careRecipientId]);
 
