@@ -7,10 +7,10 @@ import "react-vertical-timeline-component/style.min.css";
 import { useParams } from "react-router-dom";
 import { ParamTypes } from "utils/interfaces";
 import { EventModelInterface } from "utils/interfaces";
-import ConcernsTimeline from "pages/ConcernsTimeline";
-import ObservationsTimeline from "pages/ObservationsTimeline";
-import AppBar from "components/AppBar";
-import NoEventsFound from "pages/NoEventsFound";
+import ConcernsTimeline from "pages/ConcernsTimeline/ConcernsTimeline";
+import ObservationsTimeline from "pages/ObservationsTimeline/ObservationsTimeline";
+import AppBar from "components/AppBar/AppBar";
+import NoEventsFound from "pages/NoEventsFound/NoEventsFound";
 
 function EventsTimeline() {
   const { careRecipientId } = useParams<ParamTypes>();
