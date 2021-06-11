@@ -45,7 +45,6 @@ function EventsTimeline() {
     }
   };
 
-  // !observations.length
   if (loading) {
     return <p>loading...</p>;
   }

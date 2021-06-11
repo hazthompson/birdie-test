@@ -13,7 +13,7 @@ import { faFlag } from "@fortawesome/free-solid-svg-icons";
 import { EventModelInterface } from "utils/interfaces";
 
 interface ConcernTimelineProps {
-  events: Array<EventModelInterface>;
+  events: EventModelInterface[];
 }
 
 function FlagIcon() {

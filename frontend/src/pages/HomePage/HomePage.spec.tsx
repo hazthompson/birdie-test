@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import App from "./App";
+import HomePage from "./HomePage";
 
-test("renders learn react link", async () => {
-  render(<App />);
+it("renders input for CareRecipient ID", async () => {
+  render(<HomePage />);
   const input = await screen.findByLabelText("Care Recipient's ID:");
   expect(input).toBeInTheDocument();
 });

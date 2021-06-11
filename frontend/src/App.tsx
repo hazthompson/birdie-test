@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import HomePage from "./pages/Homepage/HomePage";
+import HomePage from "./pages/HomePage/HomePage";
 import EventsTimeline from "./pages/EventsTimeline/EventsTimeline";
 
 function App() {

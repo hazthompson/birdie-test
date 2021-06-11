@@ -38,8 +38,6 @@ function ObservationIcon({ eventType }: IconProps) {
 }
 
 function ObservationsTimeline({ events }: ObservationsTimelineProps) {
-  console.log("everything", events);
-
   const furtherInfoAvailable = (currentEvent: EventModelInterface) => {
     let infoToReturn: string = "";
     if (currentEvent.payload.fluid) {

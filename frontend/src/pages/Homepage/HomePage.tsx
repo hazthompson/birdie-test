@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import GlobalStyles from "assets/GlobalStyles";
 
-function Homepage() {
+function HomePage() {
   const history = useHistory();
   const [recipientId, setRecipientId] = useState<string>("");
 
@@ -43,6 +43,7 @@ function Homepage() {
           `}
         >
           <label
+            htmlFor='recipientId'
             css={css`
               font-weight: bold;
             `}
@@ -86,4 +87,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default HomePage;
