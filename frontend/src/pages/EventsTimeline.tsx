@@ -9,6 +9,7 @@ import { ParamTypes } from "../../../utils/interfaces";
 import { EventModelInterface } from "../../../utils/interfaces";
 import ConcernsTimeline from "./ConcernsTimeline";
 import ObservationsTimeline from "./ObservationsTimeline";
+import AppBar from "../components/AppBar";
 
 function EventsTimeline() {
   const { careRecipientId } = useParams<ParamTypes>();
@@ -32,13 +33,21 @@ function EventsTimeline() {
       });
   }, [careRecipientId]);
 
+  const hasConcerns = () => {
+    if (concerns.length) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   return (
     <div>
       {!observations.length ? (
         <p>loading...</p>
       ) : (
         <div>
-          <header>Observations</header>
+          <AppBar hasConcerns={hasConcerns()} />
           <Route path={path} exact>
             <ObservationsTimeline events={observations} />
           </Route>

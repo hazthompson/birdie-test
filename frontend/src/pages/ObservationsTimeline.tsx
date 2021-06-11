@@ -40,7 +40,6 @@ function ObservationsTimeline({ events }: ObservationsTimelineProps) {
         background-color: ${GlobalStyles.lightGray};
       `}
     >
-      <p>OBSERVATIONS</p>
       <VerticalTimeline
         contentStyle={{
           background: `${GlobalStyles.lightGray}`,
