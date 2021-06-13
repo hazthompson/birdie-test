@@ -26,15 +26,65 @@ interface IconProps {
 
 function ObservationIcon({ eventType }: IconProps) {
   if (eventType.includes("fluid")) {
-    return <FontAwesomeIcon icon={faCoffee} />;
+    return (
+      <p
+        css={css`
+          margin-block-start: 0rem;
+          margin-block-end: 0rem;
+          margin: 28px 0px 0px 5px;
+        `}
+      >
+        <FontAwesomeIcon icon={faCoffee} />
+      </p>
+    );
   } else if (eventType.includes("food")) {
-    return <FontAwesomeIcon icon={faUtensils} />;
+    return (
+      <p
+        css={css`
+          margin-block-start: 0rem;
+          margin-block-end: 0rem;
+          margin: 28px 0px 0px 10px;
+        `}
+      >
+        <FontAwesomeIcon icon={faUtensils} />{" "}
+      </p>
+    );
   } else if (eventType.includes("general")) {
-    return <FontAwesomeIcon icon={faClipboard} />;
+    return (
+      <p
+        css={css`
+          margin-block-start: 0rem;
+          margin-block-end: 0rem;
+          margin: 28px 0px 0px 10px;
+        `}
+      >
+        <FontAwesomeIcon icon={faClipboard} />
+      </p>
+    );
   } else if (eventType.includes("mood")) {
-    return <FontAwesomeIcon icon={faSmile} />;
+    return (
+      <p
+        css={css`
+          margin-block-start: 0rem;
+          margin-block-end: 0rem;
+          margin: 28px 0px 0px 8px;
+        `}
+      >
+        <FontAwesomeIcon icon={faSmile} />
+      </p>
+    );
   }
-  return <FontAwesomeIcon icon={faFlag} />;
+  return (
+    <p
+      css={css`
+        margin-block-start: 0rem;
+        margin-block-end: 0rem;
+        margin: 28px 0px 0px 10px;
+      `}
+    >
+      <FontAwesomeIcon icon={faFlag} />
+    </p>
+  );
 }
 
 function ObservationsTimeline({ events }: ObservationsTimelineProps) {
@@ -66,8 +116,11 @@ function ObservationsTimeline({ events }: ObservationsTimelineProps) {
           <VerticalTimelineElement
             key={event.id}
             className='vertical-timeline-element--work'
+            contentStyle={{ border: `3px solid  ${GlobalStyles.birdieBlue}` }}
             contentArrowStyle={{
               borderRight: `7px solid  ${GlobalStyles.birdieBlue}`,
+              marginRight: "3px",
+              marginLeft: "3px",
             }}
             date={moment(event.timestamp).format("LL")}
             iconStyle={{ background: `${GlobalStyles.birdieBlue}` }}
