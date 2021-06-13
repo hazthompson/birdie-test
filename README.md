@@ -1,6 +1,6 @@
 # Birdie Developer Test
 
-This App displays a timeline of observations of older adults receiving care. These observations include mood, fluid intake, food intake, general etc. This App allows family members to stay up to date on the observations of the carers for their relation. If any concerns have been raised there is a also separate timeline which displays these concerns with relevant notes/further information in the description.
+This App displays a timeline of observations of older adults receiving care. These observations include mood, fluid intake, food intake, general etc. This App allows family members to stay up to date on the observations of the carers for their relation. If any concerns have been raised there is also a separate timeline which displays these concerns with relevant notes/further information in the description. You can see this at the path `/concerns`.
 
 ## Set up
 
@@ -38,13 +38,13 @@ DB_NAME=
    npm install
    ```
 
-   b. Run the HTTP server (will start on port `8000`)
+   b. Run the HTTP server. (This will now be available at http://localhost:8000)
 
    ```bash
    npm run dev
    ```
 
-2. Start the React app (Run the following commands within the `front-end` folder)
+2. Start the React app. (Run the following commands within the `frontend` folder)
 
    a. Install the dependencies
 
@@ -57,6 +57,8 @@ DB_NAME=
    ```bash
    npm start
    ```
+
+3. Visit http://localhost:3000
 
 ### To test
 
@@ -79,6 +81,8 @@ DB_NAME=
 
 ### Next steps I would add if there was more time
 
+- Deploy to Heroku. I attempted this but unfortunately ran into some problems in relation to the usage of ES6 imports in production.
 - Add a stacked bar chart with [charts.js] (https://www.chartjs.org/docs/latest/samples/bar/stacked.html) to display data for whether medication has been taken. This would display by week/month whether medication was mostly "not taken, partically taken, taken, or maybe taken". As this could be useful for family members to see.
-- Improve the UI! Make the styling more interesting.
+- Improve the UI! Make the styling more relevant to the subject matter. It is perhaps too "bouncy" for medical information, which can potentially be serious.
 - Validation for entering the care recipient ID e.g. an alert message if submit is pressed with no input added (rather than a silent fail) and custom error if ID was entered incorrectly, rather than simply redirecting to the "no events" component.
+- Add search functionality. In particular, being able to search within a time period.
