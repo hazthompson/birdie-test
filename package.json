@@ -2,7 +2,7 @@
   "name": "birdie-test",
   "version": "0.0.0",
   "scripts": {
-    "start": "node backend/src/index.ts",
+    "start": "cd backend && npm start",
     "heroku-postbuild": "cd backend && npm install --only=prod && cd ../frontend && npm install --only=prod && npm run build"
   },
   "engines": {
