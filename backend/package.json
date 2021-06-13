@@ -16,7 +16,7 @@
     "test:watch": "jest --watch",
     "dev": "nodemon",
     "start": "node src/index.ts",
-    "build": "cd frontend && npm install && npm run build"
+    "build": "npm install && cd ../frontend && npm install && npm run build"
   },
   "dependencies": {
     "dotenv": "^10.0.0",
