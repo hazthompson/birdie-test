@@ -1,6 +1,7 @@
 {
   "name": "birdie-test",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "start": "cd backend && npm start",
     "heroku-postbuild": "cd backend && npm install --only=prod && cd ../frontend && npm install --only=prod && npm run build"
