@@ -1,6 +1,10 @@
 # Birdie Developer Test
 
-This App displays a timeline of observations of older adults receiving care. These observations include mood, fluid intake, food intake, general etc. This App allows family members to stay up to date on the observations of the carers for their relation. If any concerns have been raised there is also a separate timeline which displays these concerns with relevant notes/further information in the description. You can see this at the path `/concerns`.
+This App displays a timeline of observations of older adults receiving care. These observations include mood, fluid intake, food intake, general etc. This App allows family members to stay up to date on the observations of the carers for their relation.
+
+If any concerns have been raised, there is also a separate timeline which displays these concerns with relevant notes/further information in the description. You can see this via the Concerns link in the navbar if concerns exist for this care recipient.
+
+![birdie-test-recording](https://media.giphy.com/media/cixpeYRlBpWsZMyQsy/giphy.gif)
 
 ## Set up
 
@@ -78,17 +82,6 @@ DB_NAME=
    ```bash
    npm test
    ```
-
-## recording
-
-Please see below recording of
-![Welcome page](https://media.giphy.com/media/3Ue0kQtcqXNWG1TdHr/giphy.gif)
-
-<iframe src="https://giphy.com/embed/3Ue0kQtcqXNWG1TdHr" width="480" height="202" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/3Ue0kQtcqXNWG1TdHr">via GIPHY</a></p>
-
-![birdie-test-recording] (https://media.giphy.com/media/cixpeYRlBpWsZMyQsy/giphy.gif)
-
-<iframe src="https://giphy.com/embed/cixpeYRlBpWsZMyQsy" width="480" height="232" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/cixpeYRlBpWsZMyQsy">via GIPHY</a></p>
 
 ### Next steps I would add if there was more time
 
