@@ -81,7 +81,8 @@ DB_NAME=
 
 ## recording
 
-![Welcome page] (https://media.giphy.com/media/3Ue0kQtcqXNWG1TdHr/giphy.gif)
+Please see below recording of
+![Welcome page](https://media.giphy.com/media/3Ue0kQtcqXNWG1TdHr/giphy.gif)
 
 <iframe src="https://giphy.com/embed/3Ue0kQtcqXNWG1TdHr" width="480" height="202" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/3Ue0kQtcqXNWG1TdHr">via GIPHY</a></p>
 
