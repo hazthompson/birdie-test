@@ -52,7 +52,7 @@ function EventsTimeline() {
             <ObservationsTimeline events={observations} />
           </Route>
           <Route path={`${path}/concerns`}>
-            <ConcernsTimeline events={concerns} />
+            <ConcernsTimeline concerns={concerns} />
           </Route>
         </div>
       )}

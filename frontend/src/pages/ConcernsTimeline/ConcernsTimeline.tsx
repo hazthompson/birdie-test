@@ -1,19 +1,19 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { css, jsx } from "@emotion/react";
-import GlobalStyles from "assets/GlobalStyles";
-import moment from "moment";
+import { css, jsx } from '@emotion/react';
+import GlobalStyles from 'assets/GlobalStyles';
+import moment from 'moment';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFlag } from "@fortawesome/free-solid-svg-icons";
-import { EventModelInterface } from "utils/interfaces";
+} from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFlag } from '@fortawesome/free-solid-svg-icons';
+import { EventModelInterface } from 'utils/interfaces';
 
 interface ConcernTimelineProps {
-  events: EventModelInterface[];
+  concerns: EventModelInterface[];
 }
 
 function FlagIcon() {
@@ -30,7 +30,7 @@ function FlagIcon() {
   );
 }
 
-function ConcernsTimeline({ events }: ConcernTimelineProps) {
+function ConcernsTimeline({ concerns }: ConcernTimelineProps) {
   return (
     <div
       css={css`
@@ -42,17 +42,17 @@ function ConcernsTimeline({ events }: ConcernTimelineProps) {
           background: `${GlobalStyles.lightGray}`,
         }}
       >
-        {events.map((concern) => (
+        {concerns.map((concern) => (
           <VerticalTimelineElement
             key={concern.id}
             className='vertical-timeline-element--work'
             contentStyle={{ border: `3px solid  ${GlobalStyles.accentOrange}` }}
             contentArrowStyle={{
               borderRight: `7px solid  ${GlobalStyles.accentOrange}`,
-              marginRight: "3px",
-              marginLeft: "3px",
+              marginRight: '3px',
+              marginLeft: '3px',
             }}
-            date={moment(concern.timestamp).format("LL")}
+            date={moment(concern.timestamp).format('LL')}
             iconStyle={{ background: `${GlobalStyles.accentOrange}` }}
             icon={<FlagIcon />}
           >
