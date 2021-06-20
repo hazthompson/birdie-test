@@ -1,16 +1,16 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from "@emotion/react";
-import { useEffect, useState } from "react";
-import { Route, useRouteMatch } from "react-router-dom";
-import "react-vertical-timeline-component/style.min.css";
-import { useParams } from "react-router-dom";
-import { ParamTypes } from "utils/interfaces";
-import { EventModelInterface } from "utils/interfaces";
-import ConcernsTimeline from "pages/ConcernsTimeline/ConcernsTimeline";
-import ObservationsTimeline from "pages/ObservationsTimeline/ObservationsTimeline";
-import AppBar from "components/AppBar/AppBar";
-import NoEventsFound from "pages/NoEventsFound/NoEventsFound";
+import { jsx } from '@emotion/react';
+import { useEffect, useState } from 'react';
+import { Route, useRouteMatch } from 'react-router-dom';
+import 'react-vertical-timeline-component/style.min.css';
+import { useParams } from 'react-router-dom';
+import { ParamTypes } from 'utils/interfaces';
+import { EventModelInterface } from 'utils/interfaces';
+import ConcernsTimeline from 'pages/ConcernsTimeline/ConcernsTimeline';
+import ObservationsTimeline from 'pages/ObservationsTimeline/ObservationsTimeline';
+import AppBar from 'components/AppBar/AppBar';
+import NoEventsFound from 'pages/NoEventsFound/NoEventsFound';
 
 function EventsTimeline() {
   const { careRecipientId } = useParams<ParamTypes>();
@@ -37,14 +37,6 @@ function EventsTimeline() {
       });
   }, [careRecipientId]);
 
-  const hasConcerns = () => {
-    if (concerns.length) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   if (loading) {
     return <p>loading...</p>;
   }
@@ -54,7 +46,7 @@ function EventsTimeline() {
         <NoEventsFound />
       ) : (
         <div>
-          <AppBar hasConcerns={hasConcerns()} />
+          <AppBar hasConcerns={concerns.length ? true : false} />
           <Route path={path} exact>
             <ObservationsTimeline events={observations} />
           </Route>
