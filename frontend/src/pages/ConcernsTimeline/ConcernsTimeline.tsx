@@ -8,26 +8,11 @@ import {
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFlag } from '@fortawesome/free-solid-svg-icons';
 import { EventModelInterface } from 'utils/interfaces';
+import FlagIcon from './FlagIcon';
 
 interface ConcernTimelineProps {
   concerns: EventModelInterface[];
-}
-
-function FlagIcon() {
-  return (
-    <p
-      css={css`
-        margin-block-start: 0rem;
-        margin-block-end: 0rem;
-        margin: 28px 0px 0px 10px;
-      `}
-    >
-      <FontAwesomeIcon icon={faFlag} />
-    </p>
-  );
 }
 
 function ConcernsTimeline({ concerns }: ConcernTimelineProps) {
