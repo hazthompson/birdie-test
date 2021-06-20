@@ -17,7 +17,8 @@ function EventsTimeline() {
   let { path } = useRouteMatch();
   const [observations, setObservations] = useState<EventModelInterface[]>([]);
   const [concerns, setConcerns] = useState<EventModelInterface[]>([]);
-  const [loading, setLoading] = useState<Boolean>(true);
+  const [loadingObservations, setLoadingObservations] = useState<Boolean>(true);
+  const [loadingConcerns, setLoadingConcerns] = useState<Boolean>(true);
 
   useEffect(() => {
     fetch(
@@ -26,18 +27,18 @@ function EventsTimeline() {
       .then((response) => response.json())
       .then((data) => {
         setObservations(data);
-        setLoading(false);
+        setLoadingObservations(false);
       });
 
     fetch(`/api/events/${careRecipientId}?eventType=concern_raised`)
       .then((response) => response.json())
       .then((data) => {
         setConcerns(data);
-        setLoading(false);
+        setLoadingConcerns(false);
       });
   }, [careRecipientId]);
 
-  if (loading) {
+  if (loadingObservations || loadingConcerns) {
     return <p>loading...</p>;
   }
   return (
