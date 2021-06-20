@@ -1,95 +1,23 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { css, jsx } from "@emotion/react";
-import moment from "moment";
+import { css, jsx } from '@emotion/react';
+import moment from 'moment';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFlag } from "@fortawesome/free-solid-svg-icons";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-import { faUtensils } from "@fortawesome/free-solid-svg-icons";
-import { faClipboard } from "@fortawesome/free-solid-svg-icons";
-import { faSmile } from "@fortawesome/free-solid-svg-icons";
-import GlobalStyles from "assets/GlobalStyles";
-import { EventModelInterface } from "utils/interfaces";
+} from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+import GlobalStyles from 'assets/GlobalStyles';
+import { EventModelInterface } from 'utils/interfaces';
+import ObservationIcon from './ObservationIcon';
 
 interface ObservationsTimelineProps {
   events: EventModelInterface[];
 }
 
-interface IconProps {
-  eventType: string;
-}
-
-function ObservationIcon({ eventType }: IconProps) {
-  if (eventType.includes("fluid")) {
-    return (
-      <p
-        css={css`
-          margin-block-start: 0rem;
-          margin-block-end: 0rem;
-          margin: 28px 0px 0px 5px;
-        `}
-      >
-        <FontAwesomeIcon icon={faCoffee} />
-      </p>
-    );
-  } else if (eventType.includes("food")) {
-    return (
-      <p
-        css={css`
-          margin-block-start: 0rem;
-          margin-block-end: 0rem;
-          margin: 28px 0px 0px 10px;
-        `}
-      >
-        <FontAwesomeIcon icon={faUtensils} />{" "}
-      </p>
-    );
-  } else if (eventType.includes("general")) {
-    return (
-      <p
-        css={css`
-          margin-block-start: 0rem;
-          margin-block-end: 0rem;
-          margin: 28px 0px 0px 10px;
-        `}
-      >
-        <FontAwesomeIcon icon={faClipboard} />
-      </p>
-    );
-  } else if (eventType.includes("mood")) {
-    return (
-      <p
-        css={css`
-          margin-block-start: 0rem;
-          margin-block-end: 0rem;
-          margin: 28px 0px 0px 8px;
-        `}
-      >
-        <FontAwesomeIcon icon={faSmile} />
-      </p>
-    );
-  }
-  return (
-    <p
-      css={css`
-        margin-block-start: 0rem;
-        margin-block-end: 0rem;
-        margin: 28px 0px 0px 10px;
-      `}
-    >
-      <FontAwesomeIcon icon={faFlag} />
-    </p>
-  );
-}
-
 function ObservationsTimeline({ events }: ObservationsTimelineProps) {
   const furtherInfoAvailable = (currentEvent: EventModelInterface) => {
-    let infoToReturn: string = "";
+    let infoToReturn: string = '';
     if (currentEvent.payload.fluid) {
       infoToReturn = currentEvent.payload.fluid;
     } else if (currentEvent.payload.meal) {
@@ -119,12 +47,12 @@ function ObservationsTimeline({ events }: ObservationsTimelineProps) {
             contentStyle={{ border: `3px solid  ${GlobalStyles.birdieBlue}` }}
             contentArrowStyle={{
               borderRight: `7px solid  ${GlobalStyles.birdieBlue}`,
-              marginRight: "3px",
-              marginLeft: "3px",
+              marginRight: '3px',
+              marginLeft: '3px',
             }}
-            date={moment(event.timestamp).format("LL")}
+            date={moment(event.timestamp).format('LL')}
             iconStyle={{ background: `${GlobalStyles.birdieBlue}` }}
-            icon={<ObservationIcon eventType={event.event_type || ""} />}
+            icon={<ObservationIcon eventType={event.event_type || ''} />}
           >
             <h3
               className='vertical-timeline-element-title'
@@ -134,9 +62,9 @@ function ObservationsTimeline({ events }: ObservationsTimelineProps) {
               `}
             >
               {event.event_type
-                ?.split("_")
-                .join(" ")
-                .replace(/\w+[.!?]?$/, "")}
+                ?.split('_')
+                .join(' ')
+                .replace(/\w+[.!?]?$/, '')}
             </h3>
             {furtherInfoAvailable(event) && (
               <p
@@ -146,13 +74,13 @@ function ObservationsTimeline({ events }: ObservationsTimelineProps) {
                   font-weight: 200;
                 `}
               >
-                {" "}
+                {' '}
                 {furtherInfoAvailable(event)}
               </p>
             )}
             {event.payload.note &&
-              event.payload.note !== "None" &&
-              event.payload.note !== "[redacted] " && (
+              event.payload.note !== 'None' &&
+              event.payload.note !== '[redacted] ' && (
                 <p>Notes: {event.payload.note}</p>
               )}
           </VerticalTimelineElement>
